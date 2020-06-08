@@ -16,8 +16,4 @@ class GoogleService
     end
   end
 
-  # def self.get_location_info_for_weather(default = ForecastFacade.get_geocode)
-  #   binding.pry
-  # end
-
 end
