@@ -8,6 +8,7 @@ class FoodieFacade
     @entity_id = get_entity[:location][:entity_id]
     @restaurant_info = get_restaurant
     @forecast = get_foodie_forecast
+    @travel_time = get_travel_time
   end
 
   def get_entity
@@ -31,13 +32,12 @@ class FoodieFacade
     @google_service['routes'][0]['legs'][0]['duration']['text']
   end
 
-  def create_foodie_object
-    Foodie.new(@ending, get_travel_time, get_foodie_forecast, get_restaurant)
+  def get_foodie_forecast
+    forecast_service = ForecastService.new.get_forecast_data(@google_service['routes'][0]['legs'][0]['end_location'].symbolize_keys)
+    forecast_service[:current]
   end
 
-  def get_foodie_forecast
-    forecast_service = ForecastService.new.get_forecast_data(@google_service['routes'][0]['legs'][0]['end_location'])
-    binding.pry
+  def create_foodie_object
+    Foodie.new(@ending, @travel_time, get_foodie_forecast, get_restaurant)
   end
-  # restaurant_name = restaurant_info[:restaurants][0][:restaurant][:name]
 end

@@ -7,7 +7,6 @@ RSpec.describe 'As a user' do
     get "/api/v1/foodie?start=denver,co&end=pueblo,co&search=italian"
     expect(response).to be_successful
     json_response = JSON.parse(response.body)
-    binding.pry
     expect(json_response['data']['attributes']).to have_key("end_location")
     expect(json_response['data']['attributes']).to have_key("travel_time")
     expect(json_response['data']['attributes']).to have_key("forecast")
