@@ -27,7 +27,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'faraday'
 gem 'fast_jsonapi'
 gem 'figaro'
-gem 'rubocop'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -36,8 +35,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'vcr'
-  gem 'webmock'
 end
 
 group :development do
