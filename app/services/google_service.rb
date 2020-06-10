@@ -1,4 +1,9 @@
 class GoogleService
+  def get_distance(starting, ending)
+    response = conn.get("directions/json?&origin=#{starting}&destination=#{ending}")
+    JSON.parse(response.body)
+  end
+  
   def get_geocode(location)
     response = conn.get("geocode/json?address=#{location}")
     JSON.parse(response.body, symbolize_names: true)
@@ -10,9 +15,5 @@ class GoogleService
       faraday.params['key'] = ENV['GOOGLE_API_KEY']
     end
   end
-
-  # def self.get_location_info_for_weather(default = ForecastFacade.get_geocode)
-  #   binding.pry
-  # end
 
 end
