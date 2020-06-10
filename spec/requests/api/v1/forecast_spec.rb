@@ -11,6 +11,7 @@ RSpec.describe 'As a user' do
       expect(json_response['data']['attributes']).to have_key("hourly_weather")
       expect(json_response['data']['attributes']).to have_key("five_day_forecast")
       expect(json_response['data']['attributes']).to have_key("time_and_date")
+      expect(json_response['data']['attributes']).to have_key("location")
     end
   end
 end
