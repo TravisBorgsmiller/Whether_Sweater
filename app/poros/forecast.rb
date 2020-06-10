@@ -3,14 +3,15 @@ class Forecast
               :current_weather,
               :hourly_weather,
               :five_day_forecast,
-              :time_and_date
-  def initialize(data)
+              :time_and_date,
+              :location
+  def initialize(data, location)
     @id = nil
     @current_weather = data[:current]
     @hourly_weather = data[:hourly][1..8]
     @five_day_forecast = data[:daily][1..8]
     @time_and_date = get_time_date(data[:current][:dt])
-    # @location = GoogleService.get_location_info_for_weather
+    @location = location
   end
 
   def get_time_date(time_date)
